@@ -15,42 +15,42 @@ class books(db.Model):   #书籍表及各字段
     __table_args__ = {'mysql_engine': 'InnoDB', 'mysql_charset': 'utf8mb4','mysql_collate': 'utf8mb4_unicode_ci'}
     bkid = db.Column(db.Integer,primary_key=True,nullable=False,unique=True,autoincrement=True)
     bkclass = db.Column(db.Integer,nullable=True)
-    bkname = db.Column(db.String(48),nullable=False,default="")
-    bkauthor = db.Column(db.String(32),nullable=False,default="")
+    bkname = db.Column(db.String(48),nullable=False,default="NULL")
+    bkauthor = db.Column(db.String(32),nullable=False,default="NULL")
     bkpublisher = db.Column(db.String(16),default="NULL")
-    bkfile = db.Column(db.String(256),nullable=False,default="")
+    bkfile = db.Column(db.String(256),nullable=False,default="NULL")
     bkcover = db.Column(db.String(120),default="NULL")
     bkprice = db.Column(db.Integer,default=1)
 
 class comment(db.Model):   #评论表及各字段
     __table_args__ = {'mysql_engine': 'InnoDB','mysql_charset': 'utf8mb4','mysql_collate': 'utf8mb4_unicode_ci'}
     cmid = db.Column(db.Integer,primary_key=True,nullable=False,unique=True,autoincrement=True)
-    uid = db.Column(db.String(128),nullable=False,default="")
-    uname = db.Column(db.String(48),nullable=False,default="")
+    uid = db.Column(db.String(128),nullable=False,default="NULL")
+    uname = db.Column(db.String(48),nullable=False,default="NULL")
     ccontent = db.Column(db.String(128),default="NULL")
-    bkname = db.Column(db.String(16),nullable=False,default="")
+    bkname = db.Column(db.String(16),nullable=False,default="NULL")
     bkid = db.Column(db.Integer,nullable=False)
-    uavatar = db.Column(db.String(256),nullable=False,default="")
+    uavatar = db.Column(db.String(256),nullable=False,default="NULL")
     ctime = db.Column(db.DateTime,nullable=False,default=datetime.datetime.now)
 
 class users(db.Model):
     __table_args__ = {'mysql_engine': 'InnoDB','mysql_charset': 'utf8mb4','mysql_collate': 'utf8mb4_unicode_ci'}
     id = db.Column(db.Integer,primary_key=True,nullable=False,unique=True,autoincrement=True)
-    uid = db.Column(db.String(128),nullable=False,default="")
-    uname = db.Column(db.String(40),default="")
-    ugender = db.Column(db.Integer,default="")
+    uid = db.Column(db.String(128),nullable=False,default="NULL")
+    uname = db.Column(db.String(40),default="NULL")
+    ugender = db.Column(db.Integer,default=0)
     uaddress = db.Column(db.String(128),default="NULL")
-    ubalance = db.Column(db.Integer,default="")
+    ubalance = db.Column(db.Integer,default=0)
     uavatar = db.Column(db.String(256),default="NULL")
-    skey = db.Column(db.String(128),nullable=False,default="")
-    sessionkey = db.Column(db.String(128),nullable=False,default="")
+    skey = db.Column(db.String(128),nullable=False,default="NULL")
+    sessionkey = db.Column(db.String(128),nullable=False,default="NULL")
     create_time = db.Column(db.DateTime,nullable=False,default=datetime.datetime.now)
     update_time = db.Column(db.DateTime,nullable=False,default=datetime.datetime.now,onupdate=datetime.datetime.now)
 
 class orders(db.Model):
     __table_args__ = {'mysql_engine': 'InnoDB','mysql_charset': 'utf8mb4','mysql_collate': 'utf8mb4_unicode_ci'}
     oid = db.Column(db.Integer,primary_key=True,nullable=False,autoincrement=True)
-    uid = db.Column(db.String(128),nullable=False,default="")
+    uid = db.Column(db.String(128),nullable=False,default="NULL")
     oprice = db.Column(db.Integer,default=0)
     otime = db.Column(db.DateTime,default=datetime.datetime.now)
     bkid = db.Column(db.Integer,nullable=False)
